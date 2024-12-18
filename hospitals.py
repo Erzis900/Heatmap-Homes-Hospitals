@@ -87,8 +87,6 @@ class Space():
             # Generate image
             if image_prefix:
                 self.output_image(f"{image_prefix}{str(count).zfill(3)}.png")
-        
-        print(self.hospital_path)
 
     def random_restart(self, maximum, image_prefix=None, log=False):
         """Repeats hill-climbing multiple times."""
@@ -202,7 +200,8 @@ class Space():
                 heat = self.get_cost(hospitals={(row, col)})
                 heatmap[row][col] = heat
         
-        # print(heatmap)
+        print("Heatmap:")
+        print(heatmap)
         return heatmap
     
     def plot_heatmap(self, heatmap):
@@ -210,7 +209,9 @@ class Space():
         plt.imshow(heatmap, cmap='hot')
         plt.title("2D Heatmap of Sum of Manhattan distances of a hospital to all houses")
         plt.colorbar(label="Sum of Manhattan distances")
-        # print(self.hospital_path)
+        
+        print("Hospital path:")
+        print(self.hospital_path)
 
         for step in self.hospital_path:
             # print(step)
